@@ -58,19 +58,13 @@ public class ToastUtil {
 
     public static void showToast(@StringRes int msgId, int gravity,int xOffset, int yOffset){
         String msg = LightUtilsApplication.getInstance().getString(msgId);
-        showToast(msg, gravity, xOffset, xOffset);
+        showToast(msg, gravity, xOffset, yOffset);
     }
-
-//    public static void showToast(@StringRes int msgId, int gravity,int xOffset, int yOffset){
-//        String msg = LightUtilsApplication.getInstance().getString(msgId);
-//        showToast(msg, gravity);
-//    }
 
     public static void showToast(String msg, int gravity, int xOffset, int yOffset){
         Toast toast = new Toast(LightUtilsApplication.getInstance());
-        toast.setGravity(gravity, xOffset, xOffset);
+        toast.setGravity(gravity, xOffset, yOffset);
         toast.setText(msg);
         toast.show();
     }
-
 }
