@@ -10,7 +10,7 @@ import com.chowen.lightutils.LightUtilsApplication;
 /**
  * toast util
  * @author zhouwen
- * Email:wen3.zw3@alibaba-inc.com
+ * Email:chowen0927@gmail.com
  * Created by 2016/6/19.
  */
 public class ToastUtil {

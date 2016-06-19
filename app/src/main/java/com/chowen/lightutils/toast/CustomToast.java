@@ -8,7 +8,7 @@ import android.widget.Toast;
 /**
  * custom toast
  * @author zhouwen
- * Email:wen3.zw3@alibaba-inc.com
+ * Email:chowen0927@gmail.com
  * Created by 2016/6/19.
  */
 public class CustomToast extends Toast{
