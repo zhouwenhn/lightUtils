@@ -10,7 +10,7 @@ import android.util.Log;
  * @version 1.0
  * @since 2016/6/21 11:24
  */
-public class Loger {
+public class Logger {
 
     private static boolean DEBUG = true;
 
@@ -20,9 +20,7 @@ public class Loger {
      * @param msg message
      */
     private static void log(int type, String msg) {
-        StackTraceElement stackTrace = Thread.currentThread().getStackTrace()[4];
-        String className = stackTrace.getClassName();
-        String tag = className.substring(className.lastIndexOf('.') + 1) + ">>" + stackTrace.getMethodName() + "#" + stackTrace.getLineNumber();
+        String tag = getStackTraceInfo();
         switch (type){
             case Log.DEBUG:
                 Log.d(tag, msg);
@@ -105,5 +103,11 @@ public class Loger {
         } else {
             log(Log.WARN, String.format(msg, objects));
         }
+    }
+
+    public static String getStackTraceInfo() {
+        StackTraceElement stackTrace = Thread.currentThread().getStackTrace()[4];
+        String className = stackTrace.getClassName();
+        return className.substring(className.lastIndexOf('.') + 1) + ">>" + stackTrace.getMethodName() + "#" + stackTrace.getLineNumber();
     }
 }
