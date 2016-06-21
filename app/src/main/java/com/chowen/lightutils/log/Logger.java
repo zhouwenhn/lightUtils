@@ -106,7 +106,7 @@ public class Logger {
     }
 
     public static String getStackTraceInfo() {
-        StackTraceElement stackTrace = Thread.currentThread().getStackTrace()[4];
+        StackTraceElement stackTrace = Thread.currentThread().getStackTrace()[5];
         String className = stackTrace.getClassName();
         return className.substring(className.lastIndexOf('.') + 1) + ">>" + stackTrace.getMethodName() + "#" + stackTrace.getLineNumber();
     }
