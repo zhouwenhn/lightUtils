@@ -12,7 +12,7 @@ import android.util.Log;
  */
 public class Logger {
 
-    private static boolean DEBUG = true;
+    public static boolean DEBUG = true;
 
     /**
      * log
