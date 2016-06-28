@@ -1,11 +1,13 @@
 package com.chowen.lightutils.message;
 
 /**
- * Created with IntelliJ IDEA.
- * User: xiejm
- * Date: 3/4/13
- * Time: 4:17 PM
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2016</p>
+ *
+ * @author zhouwen
+ * @version 1.0
+ * @since 2016/6/21 11:24
  */
 public interface IMessageAble {
-    void onReceiveMessage(Message message);
+    void onMessage(Message message);
 }

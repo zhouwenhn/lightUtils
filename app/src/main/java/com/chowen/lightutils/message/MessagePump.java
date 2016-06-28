@@ -1,7 +1,7 @@
 package com.chowen.lightutils.message;
 
-import com.tongmo.kk.lib.log.L;
-import com.tongmo.kk.lib.task.TaskExecutor;
+import com.chowen.lightutils.log.Logger;
+import com.chowen.lightutils.task.TaskExecutor;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class MessagePump extends Thread {
     private static MessagePump sInstance;
 
     private PriorityBlockingQueue<Message> mMessagePump;
-    private List<List<WeakReference<MessageCallback>>> mMessageAndObserverList;
+    private List<List<WeakReference<IMessageAble>>> mMessageAndObserverList;
 
     public static MessagePump getInstance() {
         if (sInstance == null) {
@@ -41,16 +41,16 @@ public class MessagePump extends Thread {
                 return o1.priority < o2.priority ? -1 : o1.priority > o2.priority ? 1 : 1;
             }
         });
-        mMessageAndObserverList = new ArrayList<List<WeakReference<MessageCallback>>>(
-            Collections.<List<WeakReference<MessageCallback>>>nCopies(Message.Type.values().length, null));
+        mMessageAndObserverList = new ArrayList<List<WeakReference<IMessageAble>>>(
+            Collections.<List<WeakReference<IMessageAble>>>nCopies(Message.Type.values().length, null));
         // start the background thread to process messages.
         start();
 
-        if (L.DEBUG) L.d("started MessagePump");
+        if (Logger.DEBUG) Logger.d("started MessagePump");
     }
 
     public void destroyMessagePump() {
-        if (L.DEBUG) L.d("start destroying MessagePump");
+        if (Logger.DEBUG) Logger.d("start destroying MessagePump");
 
         // this message is used to destroy the message center,
         // we use the "Poison Pill Shutdown" approach, see: http://stackoverflow.com/a/812362/668963
@@ -63,22 +63,22 @@ public class MessagePump extends Thread {
         Thread.currentThread().setPriority(MIN_PRIORITY);
         dispatchMessages();
 
-        if (L.DEBUG) L.d("destroyed MessagePump");
+        if (Logger.DEBUG) Logger.d("destroyed MessagePump");
     }
 
-    public synchronized void register(Message.Type messageType, MessageCallback callback) {
-        List<WeakReference<MessageCallback>> observerList = mMessageAndObserverList.get(messageType.ordinal());
+    public synchronized void register(Message.Type messageType, IMessageAble callback) {
+        List<WeakReference<IMessageAble>> observerList = mMessageAndObserverList.get(messageType.ordinal());
 
         if (observerList == null) {
-            observerList = new ArrayList<WeakReference<MessageCallback>>();
+            observerList = new ArrayList<WeakReference<IMessageAble>>();
             mMessageAndObserverList.set(messageType.ordinal(), observerList);
         }
 
         if (indexOf(callback, observerList) == -1)
-            observerList.add(new WeakReference<MessageCallback>(callback));
+            observerList.add(new WeakReference<IMessageAble>(callback));
     }
 
-    private int indexOf(MessageCallback callback, List<WeakReference<MessageCallback>> observerList) {
+    private int indexOf(IMessageAble callback, List<WeakReference<IMessageAble>> observerList) {
         try {
             for (int i = 0; i < observerList.size(); ++i) {
                 if (observerList.get(i).get() == callback)
@@ -95,8 +95,8 @@ public class MessagePump extends Thread {
         return -1;
     }
 
-    public synchronized void unregister(Message.Type messageType, MessageCallback callback) {
-        List<WeakReference<MessageCallback>> observerList = mMessageAndObserverList.get(messageType.ordinal());
+    public synchronized void unregister(Message.Type messageType, IMessageAble callback) {
+        List<WeakReference<IMessageAble>> observerList = mMessageAndObserverList.get(messageType.ordinal());
 
         if (observerList != null) {
             int index = indexOf(callback, observerList);
@@ -108,7 +108,7 @@ public class MessagePump extends Thread {
     }
 
 
-    public synchronized void unregister(MessageCallback callback) {
+    public synchronized void unregister(IMessageAble callback) {
         Message.Type[] types = Message.Type.values();
 
         for (int i = 0; i < types.length; ++i) {
@@ -136,13 +136,13 @@ public class MessagePump extends Thread {
                 if (message.type == Message.Type.DESTROY_MESSAGE_PUMP)
                     break;
 
-                final List<WeakReference<MessageCallback>> observerList = mMessageAndObserverList.get(message.type.ordinal());
+                final List<WeakReference<IMessageAble>> observerList = mMessageAndObserverList.get(message.type.ordinal());
 
                 if (observerList != null && observerList.size() > 0) {
                     message.referenceCount = observerList.size();
 
                     for (int i = 0; i < observerList.size(); ++i) {
-                        final MessageCallback callback = observerList.get(i).get();
+                        final IMessageAble callback = observerList.get(i).get();
 
                         if (callback == null) {
                             observerList.remove(i);
@@ -153,16 +153,16 @@ public class MessagePump extends Thread {
                             }
 
                         } else {
-                            TaskExecutor.runTaskOnUiThread(new Runnable() {
+                            TaskExecutor.executeRunOnUIExecutorTask(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (L.DEBUG) {
-                                        callback.onReceiveMessage(message);
+                                    if (Logger.DEBUG) {
+                                        callback.onMessage(message);
 
                                     } else {
                                         try {
                                             // call the target on the UI thread
-                                            callback.onReceiveMessage(message);
+                                            callback.onMessage(message);
 
                                         } catch (Exception e) {
                                             e.printStackTrace();
