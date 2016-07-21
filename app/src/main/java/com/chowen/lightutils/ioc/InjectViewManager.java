@@ -47,7 +47,7 @@ public class InjectViewManager {
         return sInjectViewManager;
     }
 
-    public void injectContentView(Class cls, Object obj) {
+    public void invokeContentView(Class cls, Object obj) {
         InjectContentLayoutView contentAnnotation = (InjectContentLayoutView) cls.getAnnotation(InjectContentLayoutView.class);
         if (contentAnnotation != null) {
             int contentId = contentAnnotation.value();
@@ -56,12 +56,12 @@ public class InjectViewManager {
                 method.setAccessible(true);
                 method.invoke(obj, contentId);
             } catch (Exception e) {
-                Logger.e("Exception>>injectContentView>>" + obj.getClass().getSimpleName() + e);
+                Logger.e("Exception>>invokeContentView>>" + obj.getClass().getSimpleName() + e);
             }
         }
     }
 
-    public void injectChildViews(Class cls, Object obj, ViewFinder viewFinder)
+    public void invokeChildViews(Class cls, Object obj, ViewFinder viewFinder)
             throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Field[] fields = cls.getDeclaredFields();
         for (Field field : fields) {
@@ -74,16 +74,16 @@ public class InjectViewManager {
                     field.setAccessible(true);
                     field.set(obj, object);
                 } catch (Exception e) {
-                    Logger.e("Exception>>injectChildViews>>" + obj.getClass().getSimpleName() + e);
+                    Logger.e("Exception>>invokeChildViews>>" + obj.getClass().getSimpleName() + e);
                 }
                 if (viewAnnotation.listener().length > 0) {
-                    injectViewListener(cls, viewAnnotation, viewFinder.findViewById(viewId), obj);
+                    invokeViewListener(cls, viewAnnotation, viewFinder.findViewById(viewId), obj);
                 }
             }
         }
     }
 
-    private void injectViewListener(Class clazz, InjectChildView annotation, View view, Object listener) throws InvocationTargetException
+    private void invokeViewListener(Class clazz, InjectChildView annotation, View view, Object listener) throws InvocationTargetException
             , IllegalAccessException, NoSuchMethodException, InstantiationException {
         Class[] listeners = annotation.listener();
         for (int j = 0; j < listeners.length; ++j) {

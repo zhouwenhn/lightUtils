@@ -16,12 +16,12 @@ public class BaseActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InjectViewManager.getInstance().injectContentView(getClass(), this);
+        InjectViewManager.getInstance().invokeContentView(getClass(), this);
         ViewFinder viewFinder = new ViewFinder() {
             public View findViewById(int id) { return BaseActivity.this.findViewById(id); }
         };
         try {
-            InjectViewManager.getInstance().injectChildViews(getClass(), this, viewFinder);
+            InjectViewManager.getInstance().invokeChildViews(getClass(), this, viewFinder);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
