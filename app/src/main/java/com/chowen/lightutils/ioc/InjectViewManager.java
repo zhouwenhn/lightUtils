@@ -16,9 +16,9 @@ import java.util.Map;
 /**
  * @author zhouwen
  * @version 0.1
- * @since 2015/11/3
+ * @since 2016/07/21
  */
-public class InjectViewManager {
+public class InjectViewManager implements InjectAble {
 
     private static InjectViewManager sInjectViewManager = null;
 
@@ -47,6 +47,13 @@ public class InjectViewManager {
         return sInjectViewManager;
     }
 
+    /**
+     * content view
+     *
+     * @param cls current activity's object
+     * @param obj current object
+     */
+    @Override
     public void invokeContentView(Class cls, Object obj) {
         InjectContentLayoutView contentAnnotation = (InjectContentLayoutView) cls.getAnnotation(InjectContentLayoutView.class);
         if (contentAnnotation != null) {
@@ -61,6 +68,14 @@ public class InjectViewManager {
         }
     }
 
+    /**
+     * child views
+     *
+     * @param cls        current activity's object
+     * @param obj        current object
+     * @param viewFinder view's instance
+     */
+    @Override
     public void invokeChildViews(Class cls, Object obj, ViewFinder viewFinder)
             throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Field[] fields = cls.getDeclaredFields();
@@ -83,7 +98,16 @@ public class InjectViewManager {
         }
     }
 
-    private void invokeViewListener(Class clazz, InjectChildView annotation, View view, Object listener) throws InvocationTargetException
+    /**
+     * view's listener
+     *
+     * @param clazz      current activity's object
+     * @param annotation child's view annotation
+     * @param view       current view's instance
+     * @param listener   current object
+     */
+    @Override
+    public void invokeViewListener(Class clazz, InjectChildView annotation, View view, Object listener) throws InvocationTargetException
             , IllegalAccessException, NoSuchMethodException, InstantiationException {
         Class[] listeners = annotation.listener();
         for (int j = 0; j < listeners.length; ++j) {

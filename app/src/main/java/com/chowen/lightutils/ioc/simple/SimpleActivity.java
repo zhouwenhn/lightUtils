@@ -9,6 +9,7 @@ import com.chowen.lightutils.R;
 import com.chowen.lightutils.ioc.annotation.InjectChildView;
 import com.chowen.lightutils.ioc.annotation.InjectContentLayoutView;
 import com.chowen.lightutils.log.Logger;
+
 @InjectContentLayoutView(value = R.layout.activity_main)
 public class SimpleActivity extends BaseActivity implements View.OnClickListener{
 
