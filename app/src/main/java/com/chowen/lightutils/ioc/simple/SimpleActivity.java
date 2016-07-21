@@ -1,14 +1,13 @@
-package com.chowen.lightutils.injectview.simple;
+package com.chowen.lightutils.ioc.simple;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.chowen.lightutils.R;
-import com.chowen.lightutils.injectview.annotation.InjectChildView;
-import com.chowen.lightutils.injectview.annotation.InjectContentLayoutView;
+import com.chowen.lightutils.ioc.annotation.InjectChildView;
+import com.chowen.lightutils.ioc.annotation.InjectContentLayoutView;
 import com.chowen.lightutils.log.Logger;
 @InjectContentLayoutView(value = R.layout.activity_main)
 public class SimpleActivity extends BaseActivity implements View.OnClickListener{

@@ -1,4 +1,4 @@
-package com.chowen.lightutils.injectview.annotation;
+package com.chowen.lightutils.ioc.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,9 +10,8 @@ import java.lang.annotation.Target;
  * @version 0.1
  * @since 2015/11/3
  */
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface InjectChildView {
-    int value() default 0;
-    Class[] listener() default {};
+public @interface InjectContentLayoutView {
+    int value();
 }

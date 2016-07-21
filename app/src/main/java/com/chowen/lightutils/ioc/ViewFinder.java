@@ -1,4 +1,4 @@
-package com.chowen.lightutils.injectview;
+package com.chowen.lightutils.ioc;
 
 import android.view.View;
 

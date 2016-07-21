@@ -1,10 +1,10 @@
-package com.chowen.lightutils.injectview;
+package com.chowen.lightutils.ioc;
 
 import android.text.TextWatcher;
 import android.view.View;
 
-import com.chowen.lightutils.injectview.annotation.InjectChildView;
-import com.chowen.lightutils.injectview.annotation.InjectContentLayoutView;
+import com.chowen.lightutils.ioc.annotation.InjectChildView;
+import com.chowen.lightutils.ioc.annotation.InjectContentLayoutView;
 import com.chowen.lightutils.log.Logger;
 
 import java.lang.reflect.Field;

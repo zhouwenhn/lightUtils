@@ -1,11 +1,11 @@
-package com.chowen.lightutils.injectview.simple;
+package com.chowen.lightutils.ioc.simple;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.chowen.lightutils.injectview.InjectViewManager;
-import com.chowen.lightutils.injectview.ViewFinder;
+import com.chowen.lightutils.ioc.InjectViewManager;
+import com.chowen.lightutils.ioc.ViewFinder;
 
 import java.lang.reflect.InvocationTargetException;
 
