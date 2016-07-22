@@ -2,7 +2,7 @@ package com.chowen.lightutils.ioc;
 
 import android.view.View;
 
-import com.chowen.lightutils.ioc.annotation.InjectChildView;
+import com.chowen.lightutils.ioc.annotations.field.InjectChildView;
 
 import java.lang.reflect.InvocationTargetException;
 

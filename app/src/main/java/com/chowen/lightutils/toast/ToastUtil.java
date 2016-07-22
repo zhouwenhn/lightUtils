@@ -16,7 +16,7 @@ import com.chowen.lightutils.LightUtilsApplication;
 public class ToastUtil {
 
     public static void showToast(String msg){
-        Toast.makeText(LightUtilsApplication.getInstance(), msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LightUtilsApplication.getInstance().getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     public static void showToast(@StringRes int msgId){

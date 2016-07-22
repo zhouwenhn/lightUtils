@@ -1,10 +1,14 @@
 package com.chowen.lightutils.ioc;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.TextView;
 
-import com.chowen.lightutils.ioc.annotation.InjectChildView;
-import com.chowen.lightutils.ioc.annotation.InjectContentLayoutView;
+import com.chowen.lightutils.ioc.annotations.field.InjectChildView;
+import com.chowen.lightutils.ioc.annotations.field.InjectContentView;
+import com.chowen.lightutils.ioc.annotations.field.InjectString;
 import com.chowen.lightutils.log.Logger;
 
 import java.lang.reflect.Field;
@@ -18,13 +22,15 @@ import java.util.Map;
  * @version 0.1
  * @since 2016/07/21
  */
-public class InjectViewManager implements InjectAble {
+public class ViewInvoker implements InjectAble, InjectStrAble {
 
-    private static InjectViewManager sInjectViewManager = null;
+    private static ViewInvoker sInjectViewManager = null;
 
     private final static String CONTENT_VIEW = "setContentView";
 
     private final static String FIND_VIEW_BY_ID = "findViewById";
+
+    private final static String SET_TEXT = "setText";
 
     private static Map<Class, String> sSetListenerMethodMap = new HashMap<Class, String>();
 
@@ -32,15 +38,15 @@ public class InjectViewManager implements InjectAble {
         sSetListenerMethodMap.put(TextWatcher.class, "addTextChangedListener");
     }
 
-    public InjectViewManager() {
+    public ViewInvoker() {
 
     }
 
-    public static InjectViewManager getInstance() {
+    public static ViewInvoker getInstance() {
         if (sInjectViewManager == null) {
-            synchronized (InjectViewManager.class) {
+            synchronized (ViewInvoker.class) {
                 if (sInjectViewManager == null) {
-                    sInjectViewManager = new InjectViewManager();
+                    sInjectViewManager = new ViewInvoker();
                 }
             }
         }
@@ -55,7 +61,8 @@ public class InjectViewManager implements InjectAble {
      */
     @Override
     public void invokeContentView(Class cls, Object obj) {
-        InjectContentLayoutView contentAnnotation = (InjectContentLayoutView) cls.getAnnotation(InjectContentLayoutView.class);
+        InjectContentView contentAnnotation = (InjectContentView) cls.getAnnotation(InjectContentView.class);
+        Logger.e("InjectContentView>>>"+(contentAnnotation != null));
         if (contentAnnotation != null) {
             int contentId = contentAnnotation.value();
             try {
@@ -64,6 +71,82 @@ public class InjectViewManager implements InjectAble {
                 method.invoke(obj, contentId);
             } catch (Exception e) {
                 Logger.e("Exception>>invokeContentView>>" + obj.getClass().getSimpleName() + e);
+            }
+        }
+    }
+
+    @Override
+    public void invokeString(@NonNull Context context, Class<?> cls, Object obj, ViewFinder viewFinder)
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Field[] fields = cls.getDeclaredFields();
+        for (Field field : fields) {
+            InjectString injectString = field.getAnnotation(InjectString.class);
+            if (injectString != null) {
+                int strId = injectString.value();
+                int viewId = injectString.viewId();
+                Method method = viewFinder.findViewById(viewId).getClass()
+                        .getMethod(SET_TEXT, CharSequence.class);
+                method.setAccessible(true);
+                method.invoke(viewFinder.findViewById(viewId), context.getResources().getString(strId));
+            }
+        }
+    }
+
+    /**
+     * 注入string
+     *
+     * @param context    context
+     * @param viewFinder view finder
+     * @param viewId     view's id
+     * @param strId      string res's id
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    @Override
+    public void invokeString(@NonNull Context context, ViewFinder viewFinder, int viewId, int[] strId)
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        TextView textView = (TextView) viewFinder.findViewById(viewId);
+        Method method = textView.getClass().getMethod(SET_TEXT, CharSequence.class);
+        method.setAccessible(true);
+        method.invoke(textView, context.getResources().getString(strId[0]));
+    }
+
+    /**
+     * 注入string
+     *
+     * @param context    context
+     * @param cls        current's class
+     * @param obj        current's object
+     * @param viewFinder view finder
+     * @throws NoSuchMethodException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     */
+    public void invokeChildViews(@NonNull Context context, Class cls, Object obj, ViewFinder viewFinder)
+            throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Field[] fields = cls.getDeclaredFields();
+        for (Field field : fields) {
+            InjectChildView viewAnnotation = field.getAnnotation(InjectChildView.class);
+            if (viewAnnotation != null) {
+                int viewId = viewAnnotation.value();
+                try {
+                    Method method = cls.getMethod(FIND_VIEW_BY_ID, int.class);
+                    Object object = method.invoke(obj, viewId);
+                    field.setAccessible(true);
+                    field.set(obj, object);
+                } catch (Exception e) {
+                    Logger.e("Exception>>invokeChildViews>>" + obj.getClass().getSimpleName() + e);
+                }
+
+                if (viewAnnotation.listener().length > 0) {
+                    invokeViewListener(cls, viewAnnotation, viewFinder.findViewById(viewId), obj);
+                }
+
+                if (viewAnnotation.stringId().length > 0) {
+                    invokeString(context, viewFinder, viewAnnotation.value(), viewAnnotation.stringId());
+                }
             }
         }
     }
@@ -107,7 +190,8 @@ public class InjectViewManager implements InjectAble {
      * @param listener   current object
      */
     @Override
-    public void invokeViewListener(Class clazz, InjectChildView annotation, View view, Object listener) throws InvocationTargetException
+    public void invokeViewListener(Class clazz, InjectChildView annotation, View view, Object listener)
+            throws InvocationTargetException
             , IllegalAccessException, NoSuchMethodException, InstantiationException {
         Class[] listeners = annotation.listener();
         for (int j = 0; j < listeners.length; ++j) {

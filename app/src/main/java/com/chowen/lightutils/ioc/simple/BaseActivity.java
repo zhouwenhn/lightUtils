@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.chowen.lightutils.ioc.InjectViewManager;
 import com.chowen.lightutils.ioc.ViewFinder;
+import com.chowen.lightutils.ioc.ViewInvoker;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,12 +16,14 @@ public class BaseActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InjectViewManager.getInstance().invokeContentView(getClass(), this);
         ViewFinder viewFinder = new ViewFinder() {
             public View findViewById(int id) { return BaseActivity.this.findViewById(id); }
         };
+
+        ViewInvoker.getInstance().invokeContentView(getClass(), this);
         try {
-            InjectViewManager.getInstance().invokeChildViews(getClass(), this, viewFinder);
+            ViewInvoker.getInstance().invokeChildViews(getClass(), this, viewFinder);
+            ViewInvoker.getInstance().invokeString(getBaseContext(),getClass(),this,viewFinder);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
