@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  */
 
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 public @interface InjectString {
     /**
      * invoke string

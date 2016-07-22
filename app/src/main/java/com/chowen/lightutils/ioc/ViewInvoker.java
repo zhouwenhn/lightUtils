@@ -62,7 +62,6 @@ public class ViewInvoker implements InjectAble, InjectStrAble {
     @Override
     public void invokeContentView(Class cls, Object obj) {
         InjectContentView contentAnnotation = (InjectContentView) cls.getAnnotation(InjectContentView.class);
-        Logger.e("InjectContentView>>>"+(contentAnnotation != null));
         if (contentAnnotation != null) {
             int contentId = contentAnnotation.value();
             try {

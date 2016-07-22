@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  * @since 2015/11/3
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 public @interface InjectContentView {
     /**inject content view*/
     @LayoutRes int value();

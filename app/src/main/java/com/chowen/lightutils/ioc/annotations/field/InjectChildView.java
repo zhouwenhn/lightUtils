@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @since 2015/11/3
  */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 public @interface InjectChildView {
 
     /**注入view id*/
