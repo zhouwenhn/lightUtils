@@ -1,9 +1,13 @@
 package com.chowen.lightutils.ioc;
 
+import android.app.Fragment;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chowen.lightutils.ioc.annotations.field.InjectChildView;
@@ -73,6 +77,33 @@ public class ViewInvoker implements InjectAble, InjectStrAble {
             }
         }
     }
+
+    @Override
+    public View invokeContentView(Class cls, final Fragment fragment, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        InjectContentView injectContentView = (InjectContentView) cls.getAnnotation(InjectContentView.class);
+        if (injectContentView != null) {
+            int layoutId = injectContentView.value();
+            if (layoutId > 0)
+                return inflater.inflate(layoutId, container, false);
+
+//            ViewFinder viewFinder = new ViewFinder() {
+//                public View findViewById(int id) { return fragment.getActivity().findViewById(id); }
+//            };
+//            try {
+//                ViewInvoker.getInstance().invokeChildViews(getClass(), this, viewFinder);
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//            } catch (java.lang.InstantiationException e) {
+//                e.printStackTrace();
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//            }
+        }
+        return null;
+    }
+
 
     @Override
     public void invokeString(@NonNull Context context, Class<?> cls, Object obj, ViewFinder viewFinder)

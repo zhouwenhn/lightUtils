@@ -1,6 +1,10 @@
 package com.chowen.lightutils.ioc;
 
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.chowen.lightutils.ioc.annotations.field.InjectChildView;
 
@@ -32,6 +36,14 @@ public interface InjectAble {
      */
     void invokeChildViews(Class cls, Object obj, ViewFinder viewFinder) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException;
 
+    /**
+     * fragment's view
+     * @param fragment fragment's instance
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstanceState
+     */
+    View invokeContentView(Class cls, Fragment fragment, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
     /**
      * view's listener
      *

@@ -20,13 +20,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv"
-        android:text="simple" />
-
-    <Button
-        android:id="@+id/btn_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv"
-        android:layout_toRightOf="@id/btn"
-        android:text="simple fragment" />
+        android:text="Hello World!" />
 </RelativeLayout>
