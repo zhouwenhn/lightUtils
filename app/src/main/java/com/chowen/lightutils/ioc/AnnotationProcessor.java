@@ -143,6 +143,7 @@ public class AnnotationProcessor implements InjectAble, InjectStrAble {
     }
 
     /**
+     * @deprecated
      * 注入string
      *
      * @param context    context
