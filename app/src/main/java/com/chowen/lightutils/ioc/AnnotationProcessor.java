@@ -26,9 +26,9 @@ import java.util.Map;
  * @version 0.1
  * @since 2016/07/21
  */
-public class ViewInvoker implements InjectAble, InjectStrAble {
+public class AnnotationProcessor implements InjectAble, InjectStrAble {
 
-    private static ViewInvoker sInjectViewManager = null;
+    private static AnnotationProcessor sInjectViewManager = null;
 
     private final static String CONTENT_VIEW = "setContentView";
 
@@ -42,15 +42,15 @@ public class ViewInvoker implements InjectAble, InjectStrAble {
         sSetListenerMethodMap.put(TextWatcher.class, "addTextChangedListener");
     }
 
-    public ViewInvoker() {
+    public AnnotationProcessor() {
 
     }
 
-    public static ViewInvoker getInstance() {
+    public static AnnotationProcessor getInstance() {
         if (sInjectViewManager == null) {
-            synchronized (ViewInvoker.class) {
+            synchronized (AnnotationProcessor.class) {
                 if (sInjectViewManager == null) {
-                    sInjectViewManager = new ViewInvoker();
+                    sInjectViewManager = new AnnotationProcessor();
                 }
             }
         }
@@ -90,7 +90,7 @@ public class ViewInvoker implements InjectAble, InjectStrAble {
 //                public View findViewById(int id) { return fragment.getActivity().findViewById(id); }
 //            };
 //            try {
-//                ViewInvoker.getInstance().invokeChildViews(getClass(), this, viewFinder);
+//                AnnotationProcessor.getInstance().invokeChildViews(getClass(), this, viewFinder);
 //            } catch (NoSuchMethodException e) {
 //                e.printStackTrace();
 //            } catch (java.lang.InstantiationException e) {

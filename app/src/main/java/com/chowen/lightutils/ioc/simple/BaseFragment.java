@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chowen.lightutils.ioc.ViewInvoker;
+import com.chowen.lightutils.ioc.AnnotationProcessor;
 
 
 /**
@@ -18,6 +18,6 @@ public class BaseFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return ViewInvoker.getInstance().invokeContentView(getClass(), this, inflater, container, savedInstanceState);
+        return AnnotationProcessor.getInstance().invokeContentView(getClass(), this, inflater, container, savedInstanceState);
     }
 }

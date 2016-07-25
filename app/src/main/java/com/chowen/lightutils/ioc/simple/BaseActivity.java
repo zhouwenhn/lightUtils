@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.chowen.lightutils.ioc.AnnotationProcessor;
 import com.chowen.lightutils.ioc.ViewFinder;
-import com.chowen.lightutils.ioc.ViewInvoker;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -20,10 +20,10 @@ public class BaseActivity extends Activity{
             public View findViewById(int id) { return BaseActivity.this.findViewById(id); }
         };
 
-        ViewInvoker.getInstance().invokeContentView(getClass(), this);
+        AnnotationProcessor.getInstance().invokeContentView(getClass(), this);
         try {
-            ViewInvoker.getInstance().invokeChildViews(getClass(), this, viewFinder);
-            ViewInvoker.getInstance().invokeString(getBaseContext(),getClass(),this,viewFinder);
+            AnnotationProcessor.getInstance().invokeChildViews(getClass(), this, viewFinder);
+            AnnotationProcessor.getInstance().invokeString(getBaseContext(),getClass(),this,viewFinder);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
