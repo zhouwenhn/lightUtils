@@ -1,56 +1,93 @@
 package com.chowen.lightutils;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.util.SparseArray;
 
-import com.chowen.lightutils.ioc.annotations.field.InjectChildView;
-import com.chowen.lightutils.ioc.annotations.field.InjectContentView;
-import com.chowen.lightutils.ioc.annotations.field.InjectString;
-import com.chowen.lightutils.ioc.simple.BaseActivity;
-import com.chowen.lightutils.ioc.simple.IocSimpleActivity;
-import com.chowen.lightutils.ioc.simple.IocSimpleFragment;
-import com.chowen.lightutils.log.Logger;
+import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
+import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
+import com.chowen.cn.library.log.Logger;
+import com.chowen.lightutils.DBsimple.DBFragment;
+import com.chowen.lightutils.base.BaseActivity;
+import com.chowen.lightutils.httpsimple.HttpFragment;
+import com.chowen.lightutils.iocsimple.IocSimpleFragment;
+import com.chowen.lightutils.widget.WidgetFragment;
 
-@InjectContentView(value = R.layout.activity_main)
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
 
-    @InjectString(value = R.string.app_click, viewId = R.id.btn)
-    @InjectChildView(value = R.id.btn, listener = View.OnClickListener.class)
-    private Button mBtn;
+@InjectContentView(value = R.layout.activity_main_test)
+public class MainActivity extends BaseActivity {
 
-    @InjectChildView(value = R.id.btn_fragment, listener = View.OnClickListener.class)
-    private Button mBtn2;
+    private SparseArray<Fragment> mFragmentArray = new SparseArray<>();
 
-    @InjectChildView(value = R.id.tv)
-    private TextView mTv;
+    private List<String> mFragmentTitle = new ArrayList<>();
+
+    @InjectChildView(R.id.container)
+    private ViewPager mViewPager;
+
+    @InjectChildView(R.id.toolbar)
+    private Toolbar toolbar;
+
+    @InjectChildView(R.id.tabs)
+    private TabLayout tabLayout;
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.d("chowen");
+        Logger.d("chowen>>>>");
+        initFragments();
+        setSupportActionBar(toolbar);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn:
-                Intent intent = new Intent(this, IocSimpleActivity.class);
-                startActivity(intent);
-            break;
-            case R.id.btn_fragment:
-                android.app.FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(android.R.id.content, new IocSimpleFragment());
-                ft.addToBackStack(null);
-                ft.commitAllowingStateLoss();
-                break;
+    private void initFragments() {
+        mFragmentArray.append(0, new DBFragment());
+        mFragmentArray.append(1, new HttpFragment());
+        mFragmentArray.append(2, new IocSimpleFragment());
+        mFragmentArray.append(3, new WidgetFragment());
+
+
+        mFragmentTitle.add("数据库");
+        mFragmentTitle.add("网络");
+        mFragmentTitle.add("View注解");
+        mFragmentTitle.add("View控件");
+    }
+
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
+        @Override
+        public Fragment getItem(int position) {
+
+            return mFragmentArray.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentArray.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            return mFragmentTitle.get(position);
+        }
     }
 }
