@@ -1,4 +1,4 @@
-package com.chowen.lightutils.httpsimple;
+package com.chowen.lightutils.http;
 
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.lightutils.R;

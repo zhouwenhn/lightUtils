@@ -1,4 +1,4 @@
-package com.chowen.lightutils.iocsimple;
+package com.chowen.lightutils.ioc;
 
 import android.os.Bundle;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.chowen.lightutils.DBsimple;
+package com.chowen.lightutils.ioc;
 
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.lightutils.R;
@@ -9,7 +9,7 @@ import com.chowen.lightutils.base.BaseFragment;
  */
 
 @InjectContentView(value = R.layout.ioc_simple_activity_main)
-public class DBFragment extends BaseFragment {
+public class IocFragment extends BaseFragment {
 
 //    @InjectChildView(value = R.id.btn, listener = View.OnClickListener.class)
 //    private Button mBtn;

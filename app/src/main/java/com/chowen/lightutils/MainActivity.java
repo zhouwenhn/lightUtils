@@ -12,10 +12,11 @@ import android.util.SparseArray;
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.log.Logger;
-import com.chowen.lightutils.DBsimple.DBFragment;
+import com.chowen.lightutils.DB.DBFragment;
 import com.chowen.lightutils.base.BaseActivity;
-import com.chowen.lightutils.httpsimple.HttpFragment;
-import com.chowen.lightutils.iocsimple.IocSimpleFragment;
+import com.chowen.lightutils.download.DownloadFragment;
+import com.chowen.lightutils.http.HttpFragment;
+import com.chowen.lightutils.ioc.IocSimpleFragment;
 import com.chowen.lightutils.widget.WidgetFragment;
 
 import java.util.ArrayList;
@@ -53,12 +54,14 @@ public class MainActivity extends BaseActivity {
     private void initFragments() {
         mFragmentArray.append(0, new DBFragment());
         mFragmentArray.append(1, new HttpFragment());
-        mFragmentArray.append(2, new IocSimpleFragment());
-        mFragmentArray.append(3, new WidgetFragment());
+        mFragmentArray.append(2, new DownloadFragment());
+        mFragmentArray.append(3, new IocSimpleFragment());
+        mFragmentArray.append(4, new WidgetFragment());
 
 
         mFragmentTitle.add("数据库");
         mFragmentTitle.add("网络");
+        mFragmentTitle.add("下载");
         mFragmentTitle.add("View注解");
         mFragmentTitle.add("View控件");
     }

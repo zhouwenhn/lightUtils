@@ -1,6 +1,5 @@
 package com.chowen.lightutils;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +10,7 @@ import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.ioc.annotations.field.InjectString;
 import com.chowen.lightutils.base.BaseActivity;
-import com.chowen.lightutils.iocsimple.IocSimpleActivity;
-import com.chowen.lightutils.iocsimple.IocSimpleFragment;
+import com.chowen.lightutils.ioc.IocSimpleActivity;
 import com.chowen.cn.library.log.Logger;
 
 @InjectContentView(value = R.layout.activity_main)
