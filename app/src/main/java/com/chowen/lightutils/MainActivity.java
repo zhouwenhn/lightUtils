@@ -16,7 +16,7 @@ import com.chowen.lightutils.DB.DBFragment;
 import com.chowen.lightutils.base.BaseActivity;
 import com.chowen.lightutils.download.DownloadFragment;
 import com.chowen.lightutils.http.HttpFragment;
-import com.chowen.lightutils.ioc.IocSimpleFragment;
+import com.chowen.lightutils.ioc.ViewAnnotationFragment;
 import com.chowen.lightutils.widget.WidgetFragment;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity {
         mFragmentArray.append(0, new DBFragment());
         mFragmentArray.append(1, new HttpFragment());
         mFragmentArray.append(2, new DownloadFragment());
-        mFragmentArray.append(3, new IocSimpleFragment());
+        mFragmentArray.append(3, new ViewAnnotationFragment());
         mFragmentArray.append(4, new WidgetFragment());
 
 

@@ -42,7 +42,7 @@ public class MainActivity1 extends BaseActivity implements View.OnClickListener{
             case R.id.btn_fragment:
 //                android.app.FragmentManager fragmentManager = getFragmentManager();
 //                FragmentTransaction ft = fragmentManager.beginTransaction();
-//                ft.replace(android.R.id.content, new IocSimpleFragment());
+//                ft.replace(android.R.id.content, new ViewAnnotationFragment());
 //                ft.addToBackStack(null);
 //                ft.commitAllowingStateLoss();
                 break;

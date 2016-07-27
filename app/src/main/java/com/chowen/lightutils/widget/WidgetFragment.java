@@ -8,7 +8,7 @@ import com.chowen.lightutils.base.BaseFragment;
  * Created by zhouwen on 16/7/23.
  */
 
-@InjectContentView(value = R.layout.ioc_simple_activity_main)
+@InjectContentView(value = R.layout.widget_fragment)
 public class WidgetFragment extends BaseFragment {
 
 //    @InjectChildView(value = R.id.btn, listener = View.OnClickListener.class)
