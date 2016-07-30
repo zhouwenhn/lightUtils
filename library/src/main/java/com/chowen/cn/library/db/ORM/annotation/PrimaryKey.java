@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PrimaryKey {
 
-    public String column() default "primary_key";
+    String column() default "primary_key";
 
 }

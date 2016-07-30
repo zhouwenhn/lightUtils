@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface  TableName {
 
-    public String table();
+    String table();
 
 }

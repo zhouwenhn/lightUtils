@@ -14,6 +14,6 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoIncrementPrimaryKey {
 
-    public String column() default "id";
+   String column() default "id";
 
 }
