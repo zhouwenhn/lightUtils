@@ -57,13 +57,21 @@ public class MainActivity extends BaseActivity {
         mFragmentArray.append(2, new DownloadFragment());
         mFragmentArray.append(3, new ViewAnnotationFragment());
         mFragmentArray.append(4, new WidgetFragment());
+        mFragmentArray.append(5, new CacheFragment());
+        mFragmentArray.append(6, new MessageFragment());
+        mFragmentArray.append(7, new UtilsFragment());
+        mFragmentArray.append(8, new CommonFrameFragment());
 
 
         mFragmentTitle.add("数据库");
         mFragmentTitle.add("网络");
         mFragmentTitle.add("下载");
-        mFragmentTitle.add("View注解");
-        mFragmentTitle.add("View控件");
+        mFragmentTitle.add("注解");
+        mFragmentTitle.add("控件");
+        mFragmentTitle.add("缓存");
+        mFragmentTitle.add("消息");
+        mFragmentTitle.add("Utils");
+        mFragmentTitle.add("框架");
     }
 
     /**
