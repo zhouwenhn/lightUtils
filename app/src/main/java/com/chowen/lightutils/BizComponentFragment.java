@@ -20,6 +20,6 @@ public class BizComponentFragment extends com.chowen.lightutils.base.BaseFragmen
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getActivity(), "return activity!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Biz component", Toast.LENGTH_LONG).show();
     }
 }
