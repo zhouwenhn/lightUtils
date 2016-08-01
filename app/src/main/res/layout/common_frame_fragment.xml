@@ -19,37 +19,27 @@
 
     <Button
         android:id="@+id/btn_jie_gu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="安全加固" />
 
     <Button
         android:id="@+id/btn_dl_skin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="动态换肤" />
 
     <Button
         android:id="@+id/btn_hotfix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="云修复" />
 
     <Button
         android:id="@+id/btn_dl_load"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="动态加载（插件化）" />
 
     <Button
         android:id="@+id/btn_init"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="Android初始化框架" />
 
 </LinearLayout>

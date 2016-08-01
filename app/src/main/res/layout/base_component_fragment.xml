@@ -19,59 +19,43 @@
 
     <Button
         android:id="@+id/btn_orm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="数据库(ORM)" />
 
     <Button
         android:id="@+id/btn_net"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="网络" />
 
     <Button
         android:id="@+id/btn_download"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="下载" />
 
     <Button
         android:id="@+id/btn_cache"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="缓存(Cache)" />
 
     <Button
         android:id="@+id/btn_log"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="日志(Log)" />
+        style="@style/btn_style"
+        android:text="@string/btn_log" />
 
     <Button
         android:id="@+id/btn_invoke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="View注解" />
+        style="@style/btn_style"
+        android:text="@string/btn_invoke" />
 
     <Button
         android:id="@+id/btn_utils"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Utils类库" />
+        style="@style/btn_style"
+        android:text="@string/btn_utils" />
 
     <Button
         android:id="@+id/btn_mes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="消息通知机制" />
+        style="@style/btn_style"
+        android:text="@string/btn_mes" />
 
 
 </LinearLayout>

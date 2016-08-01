@@ -19,37 +19,27 @@
 
     <Button
         android:id="@+id/btn_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="通用Dialog控件" />
 
     <Button
         android:id="@+id/btn_toast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="通用Toast控件" />
 
     <Button
         android:id="@+id/btn_adapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="数据适配器" />
 
     <Button
         android:id="@+id/btn_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="Loading控件" />
 
     <Button
         android:id="@+id/btn_ui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        style="@style/btn_style"
         android:text="UI组件库" />
 
 </LinearLayout>
