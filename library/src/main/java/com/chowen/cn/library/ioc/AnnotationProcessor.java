@@ -78,28 +78,46 @@ public class AnnotationProcessor implements InjectAble, InjectStrAble {
         }
     }
 
+    /**
+     * content view
+     * @param cls cls
+     * @param fragment fragment's instance
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstanceState
+     * @return view
+     */
     @Override
     public View invokeContentView(Class cls, final Fragment fragment, LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         InjectContentView injectContentView = (InjectContentView) cls.getAnnotation(InjectContentView.class);
         if (injectContentView != null) {
-            int layoutId = injectContentView.value();
-            if (layoutId > 0)
-                return inflater.inflate(layoutId, container, false);
+            final int layoutId = injectContentView.value();
 
-//            ViewFinder viewFinder = new ViewFinder() {
-//                public View findViewById(int id) { return fragment.getActivity().findViewById(id); }
-//            };
-//            try {
-//                AnnotationProcessor.getInstance().invokeChildViews(getClass(), this, viewFinder);
-//            } catch (NoSuchMethodException e) {
-//                e.printStackTrace();
-//            } catch (java.lang.InstantiationException e) {
-//                e.printStackTrace();
-//            } catch (IllegalAccessException e) {
-//                e.printStackTrace();
-//            } catch (InvocationTargetException e) {
-//                e.printStackTrace();
-//            }
+            View view = null;
+            if (layoutId > 0) {
+                view = inflater.inflate(layoutId, container, false);
+            }
+            if (view != null) {
+                final View finalView = view;
+                ViewFinder viewFinder = new ViewFinder() {
+                    public View findViewById(int id) {
+                        return finalView.findViewById(id);
+                    }
+                };
+                try {
+                    AnnotationProcessor.getInstance().invokeChildViews(fragment.getClass(), fragment, viewFinder);
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (java.lang.InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return view;
         }
         return null;
     }
@@ -143,9 +161,6 @@ public class AnnotationProcessor implements InjectAble, InjectStrAble {
     }
 
     /**
-     * @deprecated
-     * 注入string
-     *
      * @param context    context
      * @param cls        current's class
      * @param obj        current's object
@@ -154,6 +169,7 @@ public class AnnotationProcessor implements InjectAble, InjectStrAble {
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws InvocationTargetException
+     * @deprecated 注入string
      */
     public void invokeChildViews(@NonNull Context context, Class cls, Object obj, ViewFinder viewFinder)
             throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
