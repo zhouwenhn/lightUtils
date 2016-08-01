@@ -15,41 +15,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="common frame Component" />
+        android:text="common widget Component" />
 
     <Button
-        android:id="@+id/btn_jie_gu"
+        android:id="@+id/btn_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="安全加固" />
+        android:text="通用Dialog控件" />
 
     <Button
-        android:id="@+id/btn_dl_skin"
+        android:id="@+id/btn_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="动态换肤" />
+        android:text="通用Toast控件" />
 
     <Button
-        android:id="@+id/btn_hotfix"
+        android:id="@+id/btn_adapter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="云修复" />
+        android:text="数据适配器" />
 
     <Button
-        android:id="@+id/btn_dl_load"
+        android:id="@+id/btn_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="动态加载（插件化）" />
+        android:text="Loading控件" />
 
     <Button
-        android:id="@+id/btn_init"
+        android:id="@+id/btn_ui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Android初始化框架" />
+        android:text="UI组件库" />
 
 </LinearLayout>

@@ -1,14 +1,15 @@
-package com.chowen.lightutils;
+package com.chowen.lightutils.common;
 
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
+import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseFragment;
 
 /**
  * Created by zhouwen on 16/7/23.
  */
 
-@InjectContentView(value = R.layout.cache_fragment)
-public class CacheFragment extends BaseFragment {
+@InjectContentView(value = R.layout.common_frame_fragment)
+public class CommonFrameFragment extends BaseFragment {
 
 //    @InjectChildView(value = R.id.btn, listener = View.OnClickListener.class)
 //    private Button mBtn;

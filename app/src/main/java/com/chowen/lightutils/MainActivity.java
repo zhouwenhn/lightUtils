@@ -52,26 +52,36 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initFragments() {
-        mFragmentArray.append(0, new DBFragment());
-        mFragmentArray.append(1, new HttpFragment());
-        mFragmentArray.append(2, new DownloadFragment());
-        mFragmentArray.append(3, new ViewAnnotationFragment());
-        mFragmentArray.append(4, new WidgetFragment());
-        mFragmentArray.append(5, new CacheFragment());
-        mFragmentArray.append(6, new MessageFragment());
-        mFragmentArray.append(7, new UtilsFragment());
-        mFragmentArray.append(8, new CommonFrameFragment());
+//        mFragmentArray.append(0, new DBFragment());
+//        mFragmentArray.append(1, new HttpFragment());
+//        mFragmentArray.append(2, new DownloadFragment());
+//        mFragmentArray.append(3, new ViewAnnotationFragment());
+//        mFragmentArray.append(4, new WidgetFragment());
+//        mFragmentArray.append(5, new CacheFragment());
+//        mFragmentArray.append(6, new MessageFragment());
+//        mFragmentArray.append(7, new UtilsFragment());
+//        mFragmentArray.append(8, new CommonFrameFragment());
 
 
-        mFragmentTitle.add("数据库");
-        mFragmentTitle.add("网络");
-        mFragmentTitle.add("下载");
-        mFragmentTitle.add("注解");
-        mFragmentTitle.add("控件");
-        mFragmentTitle.add("缓存");
-        mFragmentTitle.add("消息");
-        mFragmentTitle.add("Utils");
-        mFragmentTitle.add("框架");
+//        mFragmentTitle.add("数据库");
+//        mFragmentTitle.add("网络");
+//        mFragmentTitle.add("下载");
+//        mFragmentTitle.add("注解");
+//        mFragmentTitle.add("控件");
+//        mFragmentTitle.add("缓存");
+//        mFragmentTitle.add("消息");
+//        mFragmentTitle.add("Utils");
+//        mFragmentTitle.add("框架");
+
+        mFragmentArray.append(0, new BaseComponentFragment());
+        mFragmentArray.append(1, new BizComponentFragment());
+        mFragmentArray.append(2, new CommonWidgetFragment());
+        mFragmentArray.append(3, new CommonFrameFragment());
+
+        mFragmentTitle.add("基础组件");
+        mFragmentTitle.add("业务组件");
+        mFragmentTitle.add("通用控件");
+        mFragmentTitle.add("通用框架");
     }
 
     /**
