@@ -11,7 +11,9 @@ import com.chowen.cn.library.ioc.AnnotationProcessor;
 
 
 /**
- * Created by chowen on 16/7/23.
+ * @author zw
+ * @version 0.1
+ * @since 16/7/23
  */
 public class BaseFragment extends Fragment{
     @Nullable
