@@ -14,10 +14,6 @@ import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.log.Logger;
 import com.chowen.lightutils.DB.DBFragment;
 import com.chowen.lightutils.base.BaseActivity;
-import com.chowen.lightutils.download.DownloadFragment;
-import com.chowen.lightutils.http.HttpFragment;
-import com.chowen.lightutils.ioc.ViewAnnotationFragment;
-import com.chowen.lightutils.widget.WidgetFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.chowen.lightutils;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -42,9 +44,15 @@ public class BaseComponentFragment extends com.chowen.lightutils.base.BaseFragme
 
     @Override
     public void onClick(View v) {
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
         switch (v.getId()) {
             case R.id.btn_orm:
+//                Intent intent = new Intent(getActivity(),MainActivity1.class);
+//                startActivity(intent);
                 Toast.makeText(getActivity(), "btn_orm", Toast.LENGTH_LONG).show();
+//                ft.add(R.id.fl, new DBFragment(), new DBFragment().getClass().getSimpleName());
+//                ft.hide(this);
                 break;
             case R.id.btn_net:
                 Toast.makeText(getActivity(), "btn_net", Toast.LENGTH_LONG).show();
@@ -68,6 +76,7 @@ public class BaseComponentFragment extends com.chowen.lightutils.base.BaseFragme
                 Toast.makeText(getActivity(), "btn_mes", Toast.LENGTH_LONG).show();
                 break;
         }
-
+//        ft.addToBackStack(null);
+//        ft.commit();
     }
 }

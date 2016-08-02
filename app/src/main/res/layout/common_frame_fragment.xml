@@ -18,6 +18,11 @@
         android:text="common frame Component" />
 
     <Button
+        android:id="@+id/btn_a_f"
+        style="@style/btn_style"
+        android:text="Activity+多Fragment轻量级框架" />
+
+    <Button
         android:id="@+id/btn_jie_gu"
         style="@style/btn_style"
         android:text="安全加固" />

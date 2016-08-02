@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android基础组件</string>
+    <string name="app_name">Android组件</string>
     <string name="app_click">click it!</string>
     <string name="btn_login">登录组件</string>
     <string name="btn_utils">Utils类库</string>

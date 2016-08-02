@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/btn_orm"
         style="@style/btn_style"
-        android:text="数据库(ORM)" />
+        android:text="数据库(ORM)>>>>进度(50%)" />
 
     <Button
         android:id="@+id/btn_net"
