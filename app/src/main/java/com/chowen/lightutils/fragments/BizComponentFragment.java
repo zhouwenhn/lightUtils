@@ -1,11 +1,13 @@
-package com.chowen.lightutils;
+package com.chowen.lightutils.fragments;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.chowen.cn.library.fragmentkit.StackManager;
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
+import com.chowen.lightutils.R;
 
 /**
  * Created by zhouwen on 16/7/23.
@@ -20,6 +22,7 @@ public class BizComponentFragment extends com.chowen.lightutils.base.BaseFragmen
 
     @Override
     public void onClick(View v) {
+        open(new Fragment3(), null, StackManager.STANDARD);
         Toast.makeText(getActivity(), "Biz component", Toast.LENGTH_LONG).show();
     }
 }

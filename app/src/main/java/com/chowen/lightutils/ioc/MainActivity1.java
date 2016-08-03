@@ -1,4 +1,4 @@
-package com.chowen.lightutils;
+package com.chowen.lightutils.ioc;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.ioc.annotations.field.InjectString;
+import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseActivity;
 import com.chowen.lightutils.ioc.IocSimpleActivity;
 import com.chowen.cn.library.log.Logger;
