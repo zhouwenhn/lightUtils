@@ -20,7 +20,8 @@
     <Button
         android:id="@+id/btn_a_f"
         style="@style/btn_style"
-        android:text="Activity+多Fragment轻量级框架" />
+        android:textColor="@android:color/holo_red_dark"
+        android:text="page轻量级框架>>>>(进度80%＋后面会出设计设计)" />
 
     <Button
         android:id="@+id/btn_jie_gu"
