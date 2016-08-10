@@ -21,7 +21,7 @@
         android:id="@+id/btn_a_f"
         style="@style/btn_style"
         android:textColor="@android:color/holo_red_dark"
-        android:text="page轻量级框架>>>>(进度80%＋后面会出设计设计)" />
+        android:text="pagekit轻量框架>>>>(进度100%＋并出设计和使用文档)" />
 
     <Button
         android:id="@+id/btn_jie_gu"

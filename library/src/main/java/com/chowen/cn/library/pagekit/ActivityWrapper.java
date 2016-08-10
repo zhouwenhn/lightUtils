@@ -1,4 +1,4 @@
-package com.chowen.cn.library.fragmentkit;
+package com.chowen.cn.library.pagekit;
 
 import android.os.Bundle;
 import android.support.annotation.AnimRes;
@@ -16,8 +16,9 @@ import com.chowen.cn.library.R;
  */
 public abstract class ActivityWrapper extends AppCompatActivity {
 
-    public StackManager manager;
-    public IKeyDown callBack;
+    public PageStackManager mManager;
+
+    public IKeyDown mCallBack;
 
 
     @Override
@@ -28,9 +29,9 @@ public abstract class ActivityWrapper extends AppCompatActivity {
         frameLayout.setId(R.id.framLayoutId);
         setContentView(frameLayout);
         FragmentWrapper fragment = getRootFragment();
-        manager = new StackManager(this);
-        manager.setFragment(fragment);
-        onCreateNow(savedInstanceState);
+        mManager = new PageStackManager(this);
+        mManager.setFragment(fragment);
+        onCreateFirst(savedInstanceState);
     }
 
     /**
@@ -51,7 +52,7 @@ public abstract class ActivityWrapper extends AppCompatActivity {
      * @param quitOut Exit animation for the current page
      */
     public void setAnim(@AnimRes int nextIn, @AnimRes int nextOut, @AnimRes int quitIn, @AnimRes int quitOut) {
-        manager.setAnim(nextIn, nextOut, quitIn, quitOut);
+        mManager.setAnim(nextIn, nextOut, quitIn, quitOut);
     }
 
     /**
@@ -59,7 +60,7 @@ public abstract class ActivityWrapper extends AppCompatActivity {
      *
      * @param savedInstanceState savedInstanceState
      */
-    public void onCreateNow(Bundle savedInstanceState) {
+    public void onCreateFirst(Bundle savedInstanceState) {
 
     }
 
@@ -68,11 +69,11 @@ public abstract class ActivityWrapper extends AppCompatActivity {
     public final boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                manager.onBackPressed();
+                mManager.onBackPressed();
                 return true;
             default:
-                if (callBack != null) {
-                    return callBack.onKeyDown(keyCode, event);
+                if (mCallBack != null) {
+                    return mCallBack.onKeyDown(keyCode, event);
                 }
                 break;
         }
@@ -85,7 +86,7 @@ public abstract class ActivityWrapper extends AppCompatActivity {
      * @param callBack callback
      */
     public void setKeyCallBack(IKeyDown callBack) {
-        this.callBack = callBack;
+        this.mCallBack = callBack;
     }
 
 

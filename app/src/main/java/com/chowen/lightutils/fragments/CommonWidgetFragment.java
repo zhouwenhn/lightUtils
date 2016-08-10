@@ -36,7 +36,6 @@ public class CommonWidgetFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_dialog:
-                open(new Fragment3());
                 Toast.makeText(getActivity(), "btn_dialog!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.btn_toast:

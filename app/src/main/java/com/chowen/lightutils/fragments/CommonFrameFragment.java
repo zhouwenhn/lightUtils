@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
+import com.chowen.cn.library.toast.ToastUtil;
 import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseFragment;
 
@@ -41,10 +42,9 @@ public class CommonFrameFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_a_f:
-                Toast.makeText(getActivity(), "This is one Activity + more Fragments framework!", Toast.LENGTH_LONG).show();
+                ToastUtil.showToast(getActivity(), "This is one Activity + more Fragments framework!");
                 break;
             case R.id.btn_jie_gu:
-                open(new Fragment3());
                 Toast.makeText(getActivity(), "btn_jie_gu!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.btn_dl_skin:

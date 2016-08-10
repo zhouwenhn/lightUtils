@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chowen.cn.library.fragmentkit.FragmentWrapper;
+import com.chowen.cn.library.pagekit.FragmentWrapper;
 import com.chowen.cn.library.ioc.AnnotationProcessor;
 
 

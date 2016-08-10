@@ -3,7 +3,7 @@ package com.chowen.lightutils.fragments;
 import android.view.View;
 import android.widget.Button;
 
-import com.chowen.cn.library.fragmentkit.StackManager;
+import com.chowen.cn.library.pagekit.PageStackManager;
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.toast.ToastUtil;
@@ -48,7 +48,6 @@ public class BaseComponentFragment extends com.chowen.lightutils.base.BaseFragme
         switch (v.getId()) {
             case R.id.btn_orm:
                 ToastUtil.showToast(getActivity(), "btn_orm");
-                open(new DBFragment(), null, StackManager.STANDARD);
                 break;
             case R.id.btn_net:
                 ToastUtil.showToast(getActivity(), "btn_net");

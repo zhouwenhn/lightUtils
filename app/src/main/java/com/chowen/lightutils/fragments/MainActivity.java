@@ -3,8 +3,8 @@ package com.chowen.lightutils.fragments;
 
 import android.os.Bundle;
 
-import com.chowen.cn.library.fragmentkit.ActivityWrapper;
-import com.chowen.cn.library.fragmentkit.FragmentWrapper;
+import com.chowen.cn.library.pagekit.ActivityWrapper;
+import com.chowen.cn.library.pagekit.FragmentWrapper;
 import com.chowen.lightutils.R;
 
 
@@ -21,16 +21,16 @@ public class MainActivity extends ActivityWrapper {
     }
 
     @Override
-    public void onCreateNow(Bundle savedInstanceState) {
+    public void onCreateFirst(Bundle savedInstanceState) {
         setAnim(R.anim.next_in, R.anim.next_out, R.anim.quit_in, R.anim.quit_out);
     }
 
     /**
      * Set the time to click to Prevent repeated clicks,default 500ms
      *
-     * @param CLICK_SPACE Repeat click time(ms)
+     * @param clickInterval Repeat click time(ms)
      */
-    public void setClickSpace(long CLICK_SPACE) {
-        manager.setClickSpace(CLICK_SPACE);
+    public void setClickSpace(long clickInterval) {
+        mManager.setClickSpace(clickInterval);
     }
 }
