@@ -1,4 +1,4 @@
-package com.chowen.lightutils.fragments;
+package com.chowen.lightutils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chowen.cn.library.pagekit.FragmentWrapper;
-import com.chowen.lightutils.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,10 @@
-package com.chowen.lightutils.fragments;
+package com.chowen.lightutils;
 
 
 import android.os.Bundle;
 
 import com.chowen.cn.library.pagekit.ActivityWrapper;
 import com.chowen.cn.library.pagekit.FragmentWrapper;
-import com.chowen.lightutils.R;
 
 
 /**

@@ -14,10 +14,10 @@ import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.log.Logger;
 import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseActivity;
-import com.chowen.lightutils.fragments.BaseComponentFragment;
-import com.chowen.lightutils.fragments.BizComponentFragment;
-import com.chowen.lightutils.fragments.CommonFrameFragment;
-import com.chowen.lightutils.fragments.CommonWidgetFragment;
+import com.chowen.lightutils.BaseComponentFragment;
+import com.chowen.lightutils.BizComponentFragment;
+import com.chowen.lightutils.CommonFrameFragment;
+import com.chowen.lightutils.CommonWidgetFragment;
 
 import java.util.ArrayList;
 import java.util.List;

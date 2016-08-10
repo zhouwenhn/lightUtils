@@ -1,4 +1,4 @@
-package com.chowen.lightutils.fragments;
+package com.chowen.lightutils;
 
 import android.view.View;
 import android.widget.Button;
