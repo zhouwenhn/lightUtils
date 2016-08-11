@@ -11,7 +11,8 @@ import com.chowen.cn.library.ioc.AnnotationProcessor;
 
 
 /**
- * @author zw
+ * Fragment基类
+ * @author zhouwen
  * @version 0.1
  * @since 16/7/23
  */

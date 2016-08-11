@@ -10,7 +10,10 @@ import com.chowen.cn.library.ioc.ViewFinder;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Created by zhouwen on 16/7/21.
+ * activity 基类
+ * @author zhouwen
+ * @version 0.1
+ * @since 16/7/23
  */
 public class BaseActivity extends AppCompatActivity {
     @Override
