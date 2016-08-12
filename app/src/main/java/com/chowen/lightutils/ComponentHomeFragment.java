@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +33,9 @@ public class ComponentHomeFragment extends FragmentWrapper {
 
     private ViewPager mViewPager;
 
-    private TabLayout tabLayout;
+    private TabLayout mTabLayout;
+
+    private Toolbar mToolbar;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -41,10 +45,13 @@ public class ComponentHomeFragment extends FragmentWrapper {
         View view = inflater.inflate(R.layout.activity_main_test, null);
         initFragments();
         mViewPager = (ViewPager) view.findViewById(R.id.container);
-        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
+        mTabLayout = (TabLayout) view.findViewById(R.id.tabs);
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        mToolbar.setLogo(R.drawable.ic_launcher);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        tabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
 
         return view;
     }
