@@ -4,6 +4,6 @@
     <string name="btn_login">登录组件</string>
     <string name="btn_utils">Utils类库</string>
     <string name="btn_mes">消息通知机制</string>
-    <string name="btn_invoke">View注解</string>
-    <string name="btn_log">日志(Log)</string>
+    <string name="btn_invoke">View注解+设计/使用文档－－>进度100%</string>
+    <string name="btn_log">日志(Log)+设计/使用文档－－>进度100%</string>
 </resources>

@@ -47,7 +47,7 @@ public class ComponentHomeFragment extends FragmentWrapper {
         mViewPager = (ViewPager) view.findViewById(R.id.container);
         mTabLayout = (TabLayout) view.findViewById(R.id.tabs);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        mToolbar.setLogo(R.drawable.ic_launcher);
+        mToolbar.setLogo(R.mipmap.ic_launcher);
         ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(mSectionsPagerAdapter);
