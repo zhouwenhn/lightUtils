@@ -8,6 +8,8 @@ import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.toast.ToastUtil;
 import com.chowen.lightutils.R;
+import com.chowen.lightutils.db.ORMFragment;
+import com.chowen.lightutils.utils.UtilsFragment;
 
 /**
  * Created by zhouwen on 16/7/23.
@@ -48,6 +50,7 @@ public class BaseComponentFragment extends com.chowen.lightutils.base.BaseFragme
         switch (v.getId()) {
             case R.id.btn_orm:
                 ToastUtil.showToast(getActivity(), "btn_orm");
+                open(new ORMFragment());
                 break;
             case R.id.btn_net:
                 ToastUtil.showToast(getActivity(), "btn_net");
@@ -66,6 +69,7 @@ public class BaseComponentFragment extends com.chowen.lightutils.base.BaseFragme
                 break;
             case R.id.btn_utils:
                 ToastUtil.showToast(getActivity(), "btn_utils");
+                open(new UtilsFragment());
                 break;
             case R.id.btn_mes:
                 ToastUtil.showToast(getActivity(), "btn_mes");
