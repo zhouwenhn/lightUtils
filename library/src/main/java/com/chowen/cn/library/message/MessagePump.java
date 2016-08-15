@@ -1,6 +1,6 @@
 package com.chowen.cn.library.message;
 
-import com.chowen.cn.library.log.Logger;
+import com.chowen.cn.library.utils.log.Logger;
 import com.chowen.cn.library.task.TaskExecutor;
 
 import java.lang.ref.WeakReference;

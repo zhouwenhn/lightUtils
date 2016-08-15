@@ -11,8 +11,7 @@ import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
 import com.chowen.cn.library.ioc.annotations.field.InjectString;
 import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseActivity;
-import com.chowen.lightutils.ioc.IocSimpleActivity;
-import com.chowen.cn.library.log.Logger;
+import com.chowen.cn.library.utils.log.Logger;
 
 @InjectContentView(value = R.layout.activity_main)
 public class MainActivity1 extends BaseActivity implements View.OnClickListener{

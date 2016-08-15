@@ -11,7 +11,7 @@ import android.util.SparseArray;
 
 import com.chowen.cn.library.ioc.annotations.field.InjectChildView;
 import com.chowen.cn.library.ioc.annotations.field.InjectContentView;
-import com.chowen.cn.library.log.Logger;
+import com.chowen.cn.library.utils.log.Logger;
 import com.chowen.lightutils.R;
 import com.chowen.lightutils.base.BaseActivity;
 import com.chowen.lightutils.BaseComponentFragment;
