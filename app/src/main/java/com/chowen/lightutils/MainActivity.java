@@ -1,35 +1,13 @@
 package com.chowen.lightutils;
 
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.chowen.cn.library.pagekit.ActivityWrapper;
-import com.chowen.cn.library.pagekit.FragmentWrapper;
-
-
-/**
- * User: zhouwen
- * Date: 2016-08-1
- * Time: 09:48
- */
-public class MainActivity extends ActivityWrapper {
+public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected FragmentWrapper getRootFragment() {
-        return new ComponentHomeFragment();
-    }
-
-    @Override
-    public void onCreateFirst(Bundle savedInstanceState) {
-        setAnim(R.anim.next_in, R.anim.next_out, R.anim.quit_in, R.anim.quit_out);
-    }
-
-    /**
-     * Set the time to click to Prevent repeated clicks,default 500ms
-     *
-     * @param clickInterval Repeat click time(ms)
-     */
-    public void setClickSpace(long clickInterval) {
-        mManager.setClickSpace(clickInterval);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
 }

@@ -1,7 +1,7 @@
 package com.chowen.cn.library.encryption.securyty;
 
 
-import com.chowen.cn.library.utils.log.Logger;
+import com.chowen.cn.library.log.Logger;
 
 import java.io.InputStream;
 import java.security.MessageDigest;
