@@ -55,6 +55,8 @@ public class NetworkUtils {
     /**
      * 判断网络是否可用
      * <p>需添加权限 android.permission.ACCESS_NETWORK_STATE</p>
+     * @param context context
+     *                @return true or false
      */
     public static boolean isAvailable(Context context) {
         NetworkInfo info = getActiveNetworkInfo(context);

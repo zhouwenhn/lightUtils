@@ -15,8 +15,8 @@ public class ImageUtils {
     /**
      * 将Bitmap转换成字符串
      *
-     * @param bitmap
-     * @return
+     * @param bitmap bitmap
+     * @return String
      */
     public static String bitmaptoString(Bitmap bitmap) {
         String string = null;
@@ -30,8 +30,8 @@ public class ImageUtils {
     /**
      * 把byte数组转化成 bitmap对象
      *
-     * @param b
-     * @return
+     * @param b byte
+     * @return Bitmap
      */
     public static Bitmap bytes2Bimap(byte[] b) {
         if (b.length != 0) {

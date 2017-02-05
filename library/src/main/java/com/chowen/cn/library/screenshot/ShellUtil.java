@@ -11,8 +11,8 @@ import java.util.List;
 public class ShellUtil {
     /**
      * 执行单句shell命令
-     *
-     * @param shell
+     *@return true or false
+     * @param shell shell command
      */
     public static synchronized boolean execShellServU(String shell) {
 
@@ -38,8 +38,8 @@ public class ShellUtil {
     }
     /**
      * 执行单句shell命令
-     *
-     * @param shell
+     * @return true or false
+     * @param shell shell's command
      */
     public static synchronized boolean execShell(String shell) {
 
@@ -64,8 +64,8 @@ public class ShellUtil {
     }
     /**
      * 执行单句shell命令(不等待执行响应)
-     *
-     * @param shell
+     *@return true or false
+     * @param shell shell's command
      */
     public static boolean execShellNotWaitFor(String shell) {
         try {
@@ -86,8 +86,8 @@ public class ShellUtil {
 
     /**
      * 执行多句shell命令
-     *
-     * @param shells
+     *@return true or false
+     * @param shells shell's command
      */
     public static boolean execShells(List<String> shells) {
         try {
@@ -114,8 +114,7 @@ public class ShellUtil {
 
     /**
      * 获取su权限
-     *
-     * @param shells
+     *@return true or false
      */
     public static boolean checkRoot() {
         try {

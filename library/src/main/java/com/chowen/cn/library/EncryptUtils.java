@@ -349,8 +349,8 @@ public class EncryptUtils {
      *            密钥
      * @param src
      *            加密文本
-     * @return
-     * @throws Exception
+     * @return string
+     * @throws Exception Exception
      */
     public static String encrypt(String key, String src) throws Exception {
         byte[] rawKey = getRawKey(key.getBytes());
@@ -365,8 +365,8 @@ public class EncryptUtils {
      *            密钥
      * @param encrypted
      *            待揭秘文本
-     * @return
-     * @throws Exception
+     * @return string
+     * @throws Exception Exception
      */
     public static String decrypt(String key, String encrypted) throws Exception {
         byte[] rawKey = getRawKey(key.getBytes());

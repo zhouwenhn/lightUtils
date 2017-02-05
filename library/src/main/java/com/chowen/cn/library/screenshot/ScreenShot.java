@@ -34,8 +34,9 @@ public class ScreenShot {
 
     /**
      * 全屏截图
+     * @return true or false
      */
-    public static boolean ScreenShotBitmapFromSnapShot() {
+    public static boolean screenShotBitmapFromSnapShot() {
 
         String SCREENCAP_PATH = "/system/bin/screencap";
         String SNAP_FILE_NAME = "/snapcache";
@@ -49,6 +50,7 @@ public class ScreenShot {
 
     /**
      * root授权
+     * @return true or false
      */
     public static boolean tryGetRoot() {
         long rawTime = System.currentTimeMillis();
@@ -71,7 +73,7 @@ public class ScreenShot {
 
     /**
      * 返回位图对象
-     *
+     * @param context context
      * @return 位图对象
      */
     public static Bitmap getBitmapSnapShot(Context context) {
@@ -166,10 +168,10 @@ public class ScreenShot {
     /**
      * ARGB字节数组构造Bitmap
      *
-     * @param data
-     * @param width
-     * @param height
-     * @return
+     * @param data data
+     * @param width width
+     * @param height height
+     * @return bitmap
      */
     public static Bitmap createBitmapByARGB(byte[] data, int width, int height) {
 

@@ -22,7 +22,7 @@ package com.chowen.cn.library.encryption.securyty;
  * converts binary data to base64 data and back.
  * 
  * <p>
- * Note {@link CharBase64} is a GWT-compatible implementation of this class.
+ * Note {@link Base64} is a GWT-compatible implementation of this class.
  */
 public class Base64 {
 
@@ -224,6 +224,7 @@ public class Base64 {
      * 
      * @param source
      *            The data to convert
+     *            @return string
      * @since 1.4
      */
     public static String encode(byte[] source) {
@@ -257,6 +258,7 @@ public class Base64 {
      * @param doPadding
      *            is {@code true} to pad result with '=' chars if it does not
      *            fall on 3 byte boundaries
+     *            @return string
      * @since 1.4
      */
     public static String encode(byte[] source, int off, int len, byte[] alphabet, boolean doPadding) {
@@ -395,6 +397,7 @@ public class Base64 {
      *            the string to decode (decoded in default encoding)
      * @return the decoded data
      * @since 1.4
+     * @throws Exception Exception
      */
     public static byte[] decode(String s) throws Exception {
         byte[] bytes = s.getBytes();
@@ -422,7 +425,7 @@ public class Base64 {
      *            The Base64 encoded data
      * @return decoded data
      * @since 1.3
-     * @throws Exception
+     * @throws Exception Exception
      */
     public static byte[] decode(byte[] source) throws Exception {
         return decode(source, 0, source.length);
@@ -453,7 +456,7 @@ public class Base64 {
      *            The length of characters to decode
      * @return decoded data
      * @since 1.3
-     * @throws Exception
+     * @throws Exception Exception
      */
     public static byte[] decode(byte[] source, int off, int len) throws Exception {
         return decode(source, off, len, DECODABET);
@@ -471,6 +474,7 @@ public class Base64 {
      * @param len
      *            The length of characters to decode
      * @return decoded data
+     * @throws Exception Exception
      */
     public static byte[] decodeWebSafe(byte[] source, int off, int len) throws Exception {
         return decode(source, off, len, WEBSAFE_DECODABET);
@@ -489,6 +493,7 @@ public class Base64 {
      * @param decodabet
      *            the decodabet for decoding Base64 content
      * @return decoded data
+     * @throws Exception Exception
      */
     public static byte[] decode(byte[] source, int off, int len, byte[] decodabet) throws Exception {
         int len34 = len * 3 / 4;

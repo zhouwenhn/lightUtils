@@ -57,8 +57,8 @@ public class SecurityUtil {
     /**
      * 根据输入流获得文件MD5摘要
      *
-     * @param inputStream
-     * @return
+     * @param inputStream inputstream
+     * @return string
      */
     public static String md5(InputStream inputStream) {
         try {

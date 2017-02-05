@@ -38,7 +38,7 @@ public class SDCardUtils {
     /**
      * 获取SD卡的剩余容量 单位byte
      *
-     * @return
+     * @return size
      */
     public static long getSDCardAllSize() {
         if (isSDCardEnable()) {
@@ -55,7 +55,7 @@ public class SDCardUtils {
     /**
      * 获取指定路径所在空间的剩余可用容量字节数，单位byte
      *
-     * @param filePath
+     * @param filePath file's path
      * @return 容量字节 SDCard可用空间，内部存储可用空间
      */
     public static long getFreeBytes(String filePath) {
@@ -73,7 +73,7 @@ public class SDCardUtils {
     /**
      * 获取系统存储路径
      *
-     * @return
+     * @return dir's path
      */
     public static String getRootDirectoryPath() {
         return Environment.getRootDirectory().getAbsolutePath();
@@ -82,9 +82,9 @@ public class SDCardUtils {
     /**
      * Check if the file is exists
      *
-     * @param filePath
-     * @param fileName
-     * @return
+     * @param filePath file's path
+     * @param fileName file's name
+     * @return true or false
      */
     public static boolean isFileExistsInSDCard(String filePath, String fileName) {
         boolean flag = false;
@@ -99,11 +99,11 @@ public class SDCardUtils {
 
     /**
      * Write file to SD card
-     * @param filePath
-     * @param filename
-     * @param content
-     * @return
-     * @throws Exception
+     * @param filePath file's path
+     * @param filename file's name
+     * @param content content
+     * @return true or false
+     * @throws Exception Exception
      */
     public static boolean saveFileToSDCard(String filePath, String filename, String content)
             throws Exception {
@@ -125,11 +125,12 @@ public class SDCardUtils {
     /**
      * Read file as stream from SD card
      *
-     * @param fileName
+     * @param fileName file's name
+     * @param filePath file's path
      *            String PATH =
      *            Environment.getExternalStorageDirectory().getAbsolutePath() +
      *            "/dirName";
-     * @return
+     * @return byte
      */
     public static byte[] readFileFromSDCard(String filePath, String fileName) {
         byte[] buffer = null;
@@ -151,11 +152,11 @@ public class SDCardUtils {
     /**
      * Delete file
      *
-     * @param filePath
-     * @param fileName
+     * @param filePath file's path
+     * @param fileName file's name
      *            filePath =
      *            android.os.Environment.getExternalStorageDirectory().getPath()
-     * @return
+     * @return true or false
      */
     public static boolean deleteSDFile(String filePath, String fileName) {
         File file = new File(filePath + "/" + fileName);
