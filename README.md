@@ -122,3 +122,15 @@ Android Toolkit Library:一组Android常用工具类（bitmap 处理，文件操
 #十五.ToastUtil:show toast
 弹出toast
 #十六.ScreenShot:截屏
+
+#引用
+#maven
+<dependency>
+  <groupId>com.chowen.cn.library</groupId>
+  <artifactId>LightUtils</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+
+#gradle
+compile 'com.chowen.cn.library:LightUtils:1.0.0'
